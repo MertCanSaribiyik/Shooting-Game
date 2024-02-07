@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Bullet
   - Wall
+  - FirstPoint
+  - LastPoint
   layers:
   - Default
   - TransparentFX

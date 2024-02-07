@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
     private Rigidbody rb;
 
     //Variables for movement : 
-    [SerializeField] private float speed;
+    public float speed;
     [SerializeField] private Transform firstPoint;
     [SerializeField] private Transform lastPoint;
 
@@ -64,9 +64,7 @@ public class Player : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJump) {
             rb.AddForce(0f, jumpForce, 0f);
             jumpCount++;
-
         }
-
     }
 
     private void MoveAnimation(float move) {
@@ -91,10 +89,4 @@ public class Player : MonoBehaviour {
             animator.SetBool(rightMovingAnim, false);
         }
     }
-
 }
-
-
-/*
-
-*/
