@@ -89,11 +89,10 @@ GameObject:
   - component: {fileID: 629341075386384132}
   - component: {fileID: 7877600060320693297}
   - component: {fileID: 1868901575761917169}
-  - component: {fileID: 6568688140359624546}
   - component: {fileID: 7711197849628975977}
   m_Layer: 0
   m_Name: DodgedEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +107,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3818109863188083273}
@@ -202,19 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 11
---- !u!114 &6568688140359624546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5198815768464321177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b87f0db48075c94f868df82cd3140e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: {r: 0.6981132, g: 0.07891055, b: 0.046101715, a: 0}
+  damage: 5
 --- !u!114 &7711197849628975977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,8 +214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df5d5130a02715540a97987b809f0e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySword: {fileID: 1636016306912091593}
+  color: {r: 0.69803923, g: 0.078431375, b: 0.047058824, a: 0}
+  enemySword: {fileID: 864289289781085972}
   dodgeForce: 2
+  maxDodge: 1
 --- !u!1 &6289672657588571296
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - FirstPoint
   - LastPoint
+  - Enemy
   layers:
   - Default
   - TransparentFX

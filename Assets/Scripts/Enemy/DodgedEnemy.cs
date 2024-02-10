@@ -1,52 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class DodgedEnemy : MonoBehaviour {
-    [SerializeField] private GameObject enemySword;
+    [SerializeField] private Color color;
+
+    [SerializeField] private EnemySword enemySword;
     [SerializeField] private float dodgeForce;
     private Transform firstPoint, lastPoint;
-    private bool isDogded;
+
+    [SerializeField] private int maxDodge;
+    private int dodgeCount;
    
     private void Awake() {
-        isDogded = false;
+        GetComponent<MeshRenderer>().material.color = color;
+        dodgeCount = 0;
 
         firstPoint = GameObject.FindWithTag("FirstPoint").transform;
         lastPoint = GameObject.FindWithTag("LastPoint").transform;
     }
 
     private void Update() {
-        if(enemySword.GetComponent<EnemySword>().dogde && !isDogded) {
+        if(enemySword.dogde && dodgeCount < maxDodge) {
             Dodged();
-            isDogded = true;
+            dodgeCount++;
         }
     }
 
     private void Dodged() {
         float firstXPos = firstPoint.position.x;
         float lastXPos = lastPoint.position.x;
+        float dodgeForce = this.dodgeForce;
 
-        //For the enemy not to leave the map during the dodge : 
+        //If the enemy going off the map to the left during dodge the dodge direction is set to the right : 
         if (transform.position.x - dodgeForce <= firstXPos) {
-            transform.Translate(dodgeForce, 0f, 0f);
-            return;
+            dodgeForce *= 1;
         }
 
-        else if(transform.position.x + dodgeForce >= lastXPos) {
-            transform.Translate(-dodgeForce, 0f, 0f);
-            return;
+        //If the enemy going off the map to the right during dodge the dodge direction is set to the left : 
+        else if (transform.position.x + dodgeForce >= lastXPos) {
+            dodgeForce *= -1;
         }
 
-        //If the enemy is already on the map during the dodge : 
-        int value = Random.Range(0, 2);     //0 - 1
-
-        if(value == 0) {
-            transform.Translate(dodgeForce, 0f, 0f);
-        }
-
+        //If the enemy is already on the map during dodge, the dodge direction is randomized : 
         else {
-            transform.Translate(-dodgeForce, 0f, 0f);
+            int value = Random.Range(0, 2);     //0 - 1
+            dodgeForce = (value == 0) ? dodgeForce *= 1 : dodgeForce *= -1;  
         }
+
+        transform.Translate(dodgeForce, 0f, 0f);
     }
 }

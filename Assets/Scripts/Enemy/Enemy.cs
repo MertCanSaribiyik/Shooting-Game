@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
     public float speed;
+    public float damage;
 
     //Enemy movement : 
     private void Update() {
@@ -16,10 +17,5 @@ public class Enemy : MonoBehaviour {
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }
-    }
-
-    //Destroyed if the enemy is out of the camera`s field of view : 
-    private void OnBecameInvisible() {
-        Destroy(gameObject);
     }
 }

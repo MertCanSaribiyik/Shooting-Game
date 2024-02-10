@@ -10,7 +10,7 @@ public class EnemySword : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.CompareTag("Bullet") && !dogde) {
+        if(other.gameObject.CompareTag("Bullet")) {
             dogde = true;
         }
     }

@@ -35,7 +35,6 @@ public class CreatingEnemy : MonoBehaviour {
         else if(Time.time >= enemyEmergenceTime) 
             enemyTypeValue = 4;
 
-        print(enemyTypeValue);
         int index = PossibiltyCreatingEnemies(enemyTypeValue);
 
         float yPos = enemyPrefabs[index].transform.position.y;

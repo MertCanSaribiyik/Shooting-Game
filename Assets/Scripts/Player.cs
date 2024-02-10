@@ -8,8 +8,7 @@ public class Player : MonoBehaviour {
 
     //Variables for movement : 
     public float speed;
-    [SerializeField] private Transform firstPoint;
-    [SerializeField] private Transform lastPoint;
+    [SerializeField] private Transform firstPoint, lastPoint;
 
     //Variables for jumping : 
     [SerializeField] private float jumpForce;
@@ -18,16 +17,16 @@ public class Player : MonoBehaviour {
 
     //Variables for animation : 
     [SerializeField] private Animator animator;
-    [SerializeField] private string idleAnim;
-    [SerializeField] private string rightMovingAnim;
-    [SerializeField] private string leftMovingAnim;
+    [SerializeField] private string idleAnim, rightMovingAnim, leftMovingAnim;
+
+    [SerializeField] private GameManager gameManager;
 
     private void Awake() {
         rb = GetComponent<Rigidbody>();
     }
 
     private void Update() {
-        if(Input.GetMouseButtonDown(0)) {
+        if(Input.GetMouseButtonDown(0) && !gameManager.gameIsPaused) {
             Shoot();
         }
 
