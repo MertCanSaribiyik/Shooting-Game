@@ -13,7 +13,7 @@ public class CreatingEnemy : MonoBehaviour {
 
     private void Awake() {
         time = Time.time + 2f;
-        enemyEmergenceTime += Time.time;
+        enemyEmergenceTime += time;
     }
 
     private void Update() {

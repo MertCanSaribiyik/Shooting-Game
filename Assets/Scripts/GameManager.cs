@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
-    [SerializeField] private GameObject player;
+    //Variables for objects to be difficulty :
     [SerializeField] private GameObject spawnArea;
     [SerializeField] private float startingEnemySpeed;
-    private GameObject[] enemies;
+    [SerializeField] private Enemy[] enemies;
 
+    //Variables for difficulty : 
     private float sceneStartTime, time;
     [SerializeField] private float difficultyStartTime;
     [SerializeField] private float increase;
@@ -18,25 +19,18 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private TMPro.TextMeshProUGUI resumeBtnTxt;
 
-    [SerializeField] private HealthBar healthBar;
-    private bool isDied;
-
     private void Awake() {
-        //Initial value assignment for enemies : 
-        enemies = spawnArea.GetComponent<CreatingEnemy>().enemyPrefabs;
-
-        foreach(GameObject enemy in enemies) {
-            enemy.GetComponent<Enemy>().speed = startingEnemySpeed;
-        }
+        //Initial vale assigment for enemies : 
+        foreach (Enemy enemy in enemies) 
+            enemy.Speed = startingEnemySpeed;
 
         sceneStartTime = Time.time;
         time = Time.time + 1f;
 
-        //Onitial value assignment for Pause Menu : 
+        //Initial value assignment for Pause Menu : 
         pauseMenu.SetActive(false);
         gameIsPaused = false;
 
-        isDied = false;
     }
 
     private void Update() {
@@ -50,31 +44,26 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        Died();
         GamePause();
     }
 
     //Over time, the speed of the character and enemies increases, and the spawn time of enemies decreases :
     private void IncreasedDifficult() {
-        player.GetComponent<Player>().speed += increase * 2;
+        Player.Instance.Speed += increase * 2;
 
         if (spawnArea.GetComponent<CreatingEnemy>().timeRange >= 0.35f) 
             spawnArea.GetComponent<CreatingEnemy>().timeRange -= increase / 5;
-
-        foreach (GameObject enemy in enemies) {
-            enemy.GetComponent<Enemy>().speed += increase;
-        }
+        
+         foreach (Enemy enemy in enemies) 
+            enemy.Speed += increase;
     }
 
     private void GamePause() {
         if(Input.GetKeyUp(KeyCode.Escape)) {
-            if(gameIsPaused) {
+            if(gameIsPaused) 
                 Resume();
-            }
-
-            else {
+            else 
                 Pause();
-            }
         }
     }
 
@@ -83,17 +72,16 @@ public class GameManager : MonoBehaviour {
         pauseMenu.SetActive(false);
         gameIsPaused = false;
 
-        if(healthBar.Finished()) 
+        if(Player.Instance.CurrentHealth <= 0f) 
             SceneOperations.ReloadScene();
-        
     }
 
-    private void Pause() {
+    public void Pause() {
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
         gameIsPaused = true;
 
-        if (healthBar.Finished()) {
+        if (Player.Instance.CurrentHealth <= 0f) {
             resumeBtnTxt.fontSize = 100;
             resumeBtnTxt.text = "PLAY AGAIN";
         }
@@ -103,12 +91,4 @@ public class GameManager : MonoBehaviour {
             resumeBtnTxt.text = "RESUME";
         }
     }
-
-    private void Died() {
-        if (healthBar.Finished() && !isDied) {
-            Pause();
-            isDied = true;
-        }
-    }
-
 }

@@ -265,7 +265,6 @@ GameObject:
   - component: {fileID: 8164292818517921466}
   - component: {fileID: 1487420241611689359}
   - component: {fileID: 6924591485258810703}
-  - component: {fileID: -6441927432296287464}
   m_Layer: 0
   m_Name: NormalEnemy
   m_TagString: Enemy
@@ -283,7 +282,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5551282341789467639}
@@ -375,18 +374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a62715f1bcb3794cb9d4b0f6453c581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 11.035001
-  damage: 50
---- !u!114 &-6441927432296287464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3590314714388552487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca868941df208ab45a0de89d4f534ec3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: {r: 0.08452781, g: 0.3660378, b: 0.05732287, a: 0}
+  color: {r: 0.08627451, g: 0.3647059, b: 0.05882353, a: 0}
+  speed: 11
+  damage: 5
+  score: 1
+  deathEffectPrefab: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 3}

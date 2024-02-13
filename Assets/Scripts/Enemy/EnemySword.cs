@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySword : MonoBehaviour {
-    public bool dogde;
+    public bool Dodge { get; set; }
 
     private void Awake() {
-        dogde = false;
+        Dodge = false;
     }
 
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("Bullet")) {
-            dogde = true;
+            Dodge = true;
         }
     }
 }

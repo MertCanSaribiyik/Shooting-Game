@@ -10,9 +10,15 @@ public class Bullet : MonoBehaviour {
         transform.Translate(0, 0, speed * Time.deltaTime);
     }
 
-    //The destroyed bullet if it collision a wall : 
+    //Enemy and bullet are destroyed : 
     private void OnCollisionEnter(Collision collision) {
         if(collision.gameObject.CompareTag("Wall")) {
+            Destroy(gameObject);
+        }
+
+        else if(collision.gameObject.CompareTag("Enemy")) {
+            Player.Instance.Score += collision.gameObject.GetComponent<Enemy>().Score;
+            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
     }
