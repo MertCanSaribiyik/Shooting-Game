@@ -22,13 +22,16 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Update() {
-        Move();
         Jump();
+    }
+
+    private void FixedUpdate() {
+        Move();
     }
 
     //The character moving in a certain range of position : 
     private void Move() {
-        float moveHorizontal = Input.GetAxis("Horizontal") * Player.Instance.Speed * Time.deltaTime;
+        float moveHorizontal = Input.GetAxis("Horizontal") * Player.Instance.Speed;
 
         MoveAnimation(moveHorizontal);
 

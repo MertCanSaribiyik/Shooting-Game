@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  speed: 1800
+  speed: 10
   jumpForce: 200
   maxJumpCount: 2
 --- !u!114 &62604733
