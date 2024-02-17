@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+
     //Singelton Design Pattern : 
     public static Player Instance { get; private set; }
 

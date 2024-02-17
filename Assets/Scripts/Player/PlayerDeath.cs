@@ -18,6 +18,10 @@ public class PlayerDeath : MonoBehaviour {
         if(Player.Instance.CurrentHealth <= 0 && !isDead) {
             gameManager.Pause();
             isDead = true;
+
+            if(Player.Instance.Score >= PlayerPrefs.GetInt("score"))
+                PlayerPrefs.SetInt("score", Player.Instance.Score);
+
         }
 
         healthBarSlider.value = Player.Instance.CurrentHealth;

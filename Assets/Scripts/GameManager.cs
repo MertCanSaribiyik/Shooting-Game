@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour {
     //Variables for the pause game menu : 
     public bool gameIsPaused;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject resumeBtn;
     [SerializeField] private TMPro.TextMeshProUGUI resumeBtnTxt;
 
     private void Awake() {
@@ -49,7 +51,7 @@ public class GameManager : MonoBehaviour {
 
     //Over time, the speed of the character and enemies increases, and the spawn time of enemies decreases :
     private void IncreasedDifficult() {
-        Player.Instance.Speed += increase * 2;
+        Player.Instance.Speed += increase;
 
         if (spawnArea.GetComponent<CreatingEnemy>().timeRange >= 0.35f) 
             spawnArea.GetComponent<CreatingEnemy>().timeRange -= increase / 5;
@@ -59,7 +61,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void GamePause() {
-        if(Input.GetKeyUp(KeyCode.Escape)) {
+        if(Input.GetButtonDown("Cancel")) {
             if(gameIsPaused) 
                 Resume();
             else 
@@ -72,7 +74,9 @@ public class GameManager : MonoBehaviour {
         pauseMenu.SetActive(false);
         gameIsPaused = false;
 
-        if(Player.Instance.CurrentHealth <= 0f) 
+        EventSystem.current.SetSelectedGameObject(null);
+
+        if (Player.Instance.CurrentHealth <= 0f) 
             SceneOperations.ReloadScene();
     }
 
@@ -80,6 +84,9 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
         gameIsPaused = true;
+
+        EventSystem.current.SetSelectedGameObject(resumeBtn);
+
 
         if (Player.Instance.CurrentHealth <= 0f) {
             resumeBtnTxt.fontSize = 100;
@@ -90,5 +97,10 @@ public class GameManager : MonoBehaviour {
             resumeBtnTxt.fontSize = 120;
             resumeBtnTxt.text = "RESUME";
         }
+    }
+
+    public void LoadMenu() {
+        Time.timeScale = 1f;
+        SceneOperations.PreviosScene();
     }
 }

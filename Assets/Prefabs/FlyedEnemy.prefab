@@ -231,9 +231,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 0.050980393, g: 0.19607843, b: 0.4862745, a: 0}
   speed: 11
-  damage: 5
+  damage: 8
   score: 3
-  deathEffectPrefab: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
+  deathEffectPrefab: {fileID: 9029484132357503464, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
 --- !u!1 &6099418998898909113
 GameObject:
   m_ObjectHideFlags: 0

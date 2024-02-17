@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour {
 
     //Character can jump up to maxJump : 
     private void Jump() {
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < Player.Instance.MaxJumpCount) {
+        if (Input.GetButtonDown("Jump") && jumpCount < Player.Instance.MaxJumpCount) {
             rb.AddForce(0f, Player.Instance.JumpForce, 0f);
             jumpCount++;
         }
