@@ -603,7 +603,7 @@ MonoBehaviour:
   panel_1: {fileID: 982233481}
   panel_2: {fileID: 1115742692}
   panel1FirstBtn: {fileID: 1946085469}
-  panel2FirstBtn: {fileID: 1379297545}
+  panel2FirstBtn: {fileID: 186413919}
   highScoreTxt: {fileID: 1505845645}
 --- !u!4 &377822192
 Transform:

@@ -7,11 +7,13 @@ public class Enemy : MonoBehaviour {
     [SerializeField] private float speed;
     [SerializeField] private float damage;
     [SerializeField] private int score;
+    [SerializeField] private float emergenceTime;
     [SerializeField] private GameObject deathEffectPrefab;
 
     //Getters and setters : 
     public float Speed { get { return speed; } set { speed = value; } }
     public float Damage { get { return damage; } set {  damage = value; } }
+    public float EmergenceTime { get {  return emergenceTime; } private set {  emergenceTime = value; } }
 
     private void Awake() {
         GetComponent<MeshRenderer>().material.color = color;

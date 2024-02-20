@@ -378,4 +378,5 @@ MonoBehaviour:
   speed: 11
   damage: 3
   score: 1
+  emergenceTime: 0
   deathEffectPrefab: {fileID: 9029484132357503464, guid: 96730f8640590934eacb6f860058e7f9, type: 3}

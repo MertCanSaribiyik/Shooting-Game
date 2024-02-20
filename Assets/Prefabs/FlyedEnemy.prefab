@@ -233,6 +233,7 @@ MonoBehaviour:
   speed: 11
   damage: 8
   score: 3
+  emergenceTime: 90
   deathEffectPrefab: {fileID: 9029484132357503464, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
 --- !u!1 &6099418998898909113
 GameObject:

@@ -6,14 +6,12 @@ using UnityEngine;
 public class CreatingEnemy : MonoBehaviour {
     public GameObject[] enemyPrefabs;
 
-    private float time;
+    private float time, startingTime;
     public float timeRange;
-
-    [SerializeField] private float enemyEmergenceTime;
 
     private void Awake() {
         time = Time.time + 2f;
-        enemyEmergenceTime += time;
+        startingTime = time;
     }
 
     private void Update() {
@@ -30,10 +28,17 @@ public class CreatingEnemy : MonoBehaviour {
 
         int enemyTypeValue = 3;
         
-        if(Time.time >= 3 * enemyEmergenceTime) 
+        /*
+        if(Time.time >= time + enemyPrefabs[2].GetComponent<Enemy>().EmergenceTime) 
             enemyTypeValue = 5;
-        else if(Time.time >= enemyEmergenceTime) 
+        else if(Time.time >= time + enemyPrefabs[1].GetComponent<Enemy>().EmergenceTime) 
             enemyTypeValue = 4;
+        */
+
+        for(int i = 0; i < enemyPrefabs.Length; i++) {
+            if(Time.time >= startingTime + enemyPrefabs[i].GetComponent<Enemy>().EmergenceTime)
+                enemyTypeValue += i;
+        }
 
         int index = PossibiltyCreatingEnemies(enemyTypeValue);
 
