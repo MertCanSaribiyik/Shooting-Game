@@ -1,8 +1,12 @@
 # Shooting-Game
 
-## Game Links
+### Game Links : 
+
 Windows : https://typerex.itch.io/shooting-game-for-windows
+
 Web : https://typerex.itch.io/shooting-game-for-web
+
+### Game Images :
 
 ![1](https://github.com/MertCanSaribiyik/Shooting-Game/assets/103216730/a3c96f03-e38b-43f7-b421-1c3e22672d19)
 
