@@ -1,5 +1,7 @@
 # Shooting-Game
 
+It's made with Unity 3D.
+
 ### Game Links : 
 
 Windows : https://typerex.itch.io/shooting-game-for-windows
