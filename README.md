@@ -2,7 +2,7 @@
 
 It's made with Unity 3D.
 
-### Game Links : 
+### Game Link : 
 https://typerex.itch.io/shooting-game
 
 ### Game Images :
